@@ -19,6 +19,24 @@ public class World {
             out.print(output);
         }
     }
+    public static void testy()
+    {
+        MapDirection x = MapDirection.NORTH;
+        if(x.next().equals(MapDirection.EAST))
+            out.println("Next 1");
+        else
+            out.println("Next 0");
+        if(x.previous().equals(MapDirection.WEST))
+            out.println("Previous 1");
+        else
+            out.println("Previous 0");
+        if(x.toUnitVector().equals(new Vector2d(0, 1)))
+            out.println("To Unit Vector 1");
+        else
+            out.println("To Unit Vector 0");
+        out.print("All that for ");
+        out.println(x.toString());
+    }
     public static void main(String[] args) {
         out.println("Start");
         int n = args.length;
@@ -36,6 +54,12 @@ public class World {
             toFunction[i] = temp;
         }
         run(toFunction);
+        Vector2d position1 = new Vector2d(1,2);
+        System.out.println(position1);
+        Vector2d position2 = new Vector2d(-2,1);
+        System.out.println(position2);
+        System.out.println(position1.add(position2));
+        testy();
         out.print("Stop");
     }
 }
