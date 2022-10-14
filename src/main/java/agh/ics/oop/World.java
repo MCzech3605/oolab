@@ -5,7 +5,7 @@ import static java.lang.System.out;
 public class World {
     public static void run(Direction[] args)
     {
-        int n = args.length;
+        // tu byla zbedna linia
         for(Direction arg : args)
         {
             String output = switch (arg)
