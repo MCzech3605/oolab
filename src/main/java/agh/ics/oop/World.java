@@ -5,7 +5,6 @@ import static java.lang.System.out;
 public class World {
     public static void run(Direction[] args)
     {
-        // tu byla zbedna linia
         for(Direction arg : args)
         {
             String output = switch (arg)
@@ -35,31 +34,26 @@ public class World {
         else
             out.println("To Unit Vector 0");
         out.print("All that for ");
-        out.println(x.toString());
+        out.println(x);
     }
     public static void main(String[] args) {
         out.println("Start");
-        int n = args.length;
-        Direction[] toFunction;
-        toFunction = new Direction[n];
-        for(int i=0; i<n; i++)
-        {
-            Direction temp = switch (args[i]) {
-                case "f" -> Direction.FORWARD;
-                case "b" -> Direction.BACKWARD;
-                case "l" -> Direction.LEFT;
-                case "r" -> Direction.RIGHT;
-                default -> Direction.UNKNOWN;
-            };
-            toFunction[i] = temp;
-        }
-        run(toFunction);
-        Vector2d position1 = new Vector2d(1,2);
-        System.out.println(position1);
-        Vector2d position2 = new Vector2d(-2,1);
-        System.out.println(position2);
-        System.out.println(position1.add(position2));
-        testy();
+        OptionsParser parser1 = new OptionsParser();
+        MoveDirection[] moves = parser1.parse(args);
+        Animal bear = new Animal();
+        out.println(bear);
+        for (MoveDirection a: moves)
+            bear.move(a);
+        /*bear.move(MoveDirection.RIGHT);
+        bear.move(MoveDirection.FORWARD);
+        bear.move(MoveDirection.FORWARD);
+        bear.move(MoveDirection.FORWARD);
+        if(bear.isAt(new Vector2d(4, 2)))
+            out.println("Good");
+        else {
+            out.print("Bad, bear is at ");
+            out.println(bear);
+        }*/
         out.print("Stop");
     }
 }

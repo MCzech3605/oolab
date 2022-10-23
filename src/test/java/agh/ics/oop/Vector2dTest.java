@@ -69,4 +69,5 @@ public class Vector2dTest {
         Vector2d a = x.opposite();
         Assertions.assertTrue(a.x == -x.x && a.y == -x.y);
     }
+    // warto uzywac @BeforeEach i @BeforeAll
 }

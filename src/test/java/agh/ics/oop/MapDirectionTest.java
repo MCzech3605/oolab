@@ -29,4 +29,5 @@ public class MapDirectionTest {
         x = MapDirection.NORTH;
         Assertions.assertTrue(x.previous().equals(MapDirection.WEST));
     }
+    // warto uzywac @BeforeEach i @BeforeAll
 }
