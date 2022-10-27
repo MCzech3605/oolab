@@ -8,28 +8,26 @@ import org.junit.jupiter.api.Test;
 
 public class AnimalTest {
     Animal bear = new Animal();
+
     @BeforeEach
-    void bearGoBack()
-    {
+    void bearGoBack() {
         bear = new Animal();
     }
 
     @Test
-    void testOrientation()
-    {
-        Assertions.assertTrue(bear.toString().equals("(2,2) Północ"));
+    void testOrientation() {
+        Assertions.assertEquals("(2,2) Północ", bear.toString());
         bear.move(MoveDirection.RIGHT);
-        Assertions.assertTrue(bear.toString().equals("(2,2) Wschód"));
+        Assertions.assertEquals("(2,2) Wschód", bear.toString());
         bear.move(MoveDirection.LEFT);
         bear.move(MoveDirection.LEFT);
-        Assertions.assertTrue(bear.toString().equals("(2,2) Zachód"));
+        Assertions.assertEquals("(2,2) Zachód", bear.toString());
         bear.move(MoveDirection.LEFT);
-        Assertions.assertTrue(bear.toString().equals("(2,2) Południe"));
+        Assertions.assertEquals("(2,2) Południe", bear.toString());
     }
 
     @Test
-    void testPosition()
-    {
+    void testPosition() {
         bear.move(MoveDirection.RIGHT);
         bear.move(MoveDirection.BACKWARD);
         Assertions.assertTrue(bear.isAt(new Vector2d(1, 2)));
@@ -40,8 +38,7 @@ public class AnimalTest {
     }
 
     @Test
-    void testStayingInMap()
-    {
+    void testStayingInMap() {
         bear.move(MoveDirection.FORWARD);
         bear.move(MoveDirection.FORWARD);
         bear.move(MoveDirection.FORWARD);
@@ -51,11 +48,11 @@ public class AnimalTest {
         bear.move(MoveDirection.BACKWARD);
         bear.move(MoveDirection.BACKWARD);
         Assertions.assertTrue(bear.isAt(new Vector2d(4, 4)));
-        for(int i=0; i<6; i++)
+        for (int i = 0; i < 6; i++)
             bear.move(MoveDirection.FORWARD);
         Assertions.assertTrue(bear.isAt(new Vector2d(0, 4)));
         bear.move(MoveDirection.RIGHT);
-        for(int i=0; i<10; i++)
+        for (int i = 0; i < 10; i++)
             bear.move(MoveDirection.BACKWARD);
         Assertions.assertTrue(bear.isAt(new Vector2d(0, 0)));
     }
