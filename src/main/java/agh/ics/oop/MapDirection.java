@@ -13,13 +13,13 @@ enum MapDirection
         switch (this)
         {
             case EAST:
-                return "Wschód";
+                return ">";
             case WEST:
-                return "Zachód";
+                return "<";
             case NORTH:
-                return "Północ";
+                return "^";
             default:
-                return "Południe";
+                return "v";
         }
     }
     public MapDirection next()

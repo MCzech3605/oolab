@@ -1,5 +1,6 @@
 package agh.ics.oop;
 
+//Old
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,23 +8,23 @@ import org.junit.jupiter.api.Test;
 
 
 public class AnimalTest {
-    Animal bear = new Animal();
-
-    @BeforeEach
-    void bearGoBack() {
-        bear = new Animal();
+    /*@BeforeEach
+    void doSmth()
+    {
+        Animal bear = new Animal();
     }
+
 
     @Test
     void testOrientation() {
-        Assertions.assertEquals("(2,2) Północ", bear.toString());
+        Assertions.assertEquals("^", bear.toString());
         bear.move(MoveDirection.RIGHT);
-        Assertions.assertEquals("(2,2) Wschód", bear.toString());
+        Assertions.assertEquals(">", bear.toString());
         bear.move(MoveDirection.LEFT);
         bear.move(MoveDirection.LEFT);
-        Assertions.assertEquals("(2,2) Zachód", bear.toString());
+        Assertions.assertEquals("<", bear.toString());
         bear.move(MoveDirection.LEFT);
-        Assertions.assertEquals("(2,2) Południe", bear.toString());
+        Assertions.assertEquals("v", bear.toString());
     }
 
     @Test
@@ -55,5 +56,5 @@ public class AnimalTest {
         for (int i = 0; i < 10; i++)
             bear.move(MoveDirection.BACKWARD);
         Assertions.assertTrue(bear.isAt(new Vector2d(0, 0)));
-    }
+    }*/
 }

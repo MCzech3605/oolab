@@ -36,22 +36,12 @@ public class World {
 
     public static void main(String[] args) {
         out.println("Start");
-        OptionsParser parser1 = new OptionsParser();
-        MoveDirection[] moves = parser1.parse(args);
-        Animal bear = new Animal();
-        out.println(bear);
-        for (MoveDirection a : moves)
-            bear.move(a);
-        /*bear.move(MoveDirection.RIGHT);
-        bear.move(MoveDirection.FORWARD);
-        bear.move(MoveDirection.FORWARD);
-        bear.move(MoveDirection.FORWARD);
-        if(bear.isAt(new Vector2d(4, 2)))
-            out.println("Good");
-        else {
-            out.print("Bad, bear is at ");
-            out.println(bear);
-        }*/
+        String args2[] = {"f", "b", "r", "l", "f", "f", "r", "r", "f", "f", "f", "f", "f", "f", "f", "f"};
+        MoveDirection[] directions = new OptionsParser().parse(args2);
+        IWorldMap map = new RectangularMap(10, 5);
+        Vector2d[] positions = { new Vector2d(2,2), new Vector2d(3,4) };
+        IEngine engine = new SimulationEngine(directions, map, positions);
+        engine.run();
         out.print("Stop");
     }
 }
