@@ -1,15 +1,22 @@
 package agh.ics.oop;
 
 
-public class Animal {
+public class Animal implements IMapElement {
     private IWorldMap map;
     private Vector2d position;
     private MapDirection orientation = MapDirection.NORTH;
 
+    public Animal(IWorldMap map) {
+        this.map = map;
+        this.position = new Vector2d(2, 2);
+        if (!map.place(this))
+            this.map = null;
+    }
+
     public Animal(IWorldMap map, Vector2d initialPosition) {
         this.map = map;
         this.position = initialPosition;
-        if(!map.place(this, initialPosition))
+        if (!map.place(this))
             this.map = null;
 
     }
@@ -43,5 +50,10 @@ public class Animal {
                 }
                 break;
         }
+        map.refresh(this);
+    }
+
+    public Vector2d getPosition() {
+        return position;
     }
 }

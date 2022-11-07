@@ -36,12 +36,22 @@ public class World {
 
     public static void main(String[] args) {
         out.println("Start");
-        //String args2[] = {"f", "b", "r", "l", "f", "f", "r", "r", "f", "f", "f", "f", "f", "f", "f", "f"};
-        MoveDirection[] directions = new OptionsParser().parse(args);
+        String[] args2 = {"f", "b", "r", "l", "f", "f", "r", "r", "f", "f", "f", "f", "f", "f", "f", "f"};
+        MoveDirection[] directions = new OptionsParser().parse(args2);
+        IWorldMap map = new GrassField(10);
+        out.println(map);
+        Vector2d[] positions = {new Vector2d(2,2), new Vector2d(3,4) };
+        IEngine engine = new SimulationEngine(directions, map, positions);
+        engine.run();
+        out.println(map);
+        /*
+        MoveDirection[] directions = new OptionsParser().parse(args2);
         IWorldMap map = new RectangularMap(10, 5);
         Vector2d[] positions = { new Vector2d(2,2), new Vector2d(3,4) };
         IEngine engine = new SimulationEngine(directions, map, positions);
         engine.run();
+        out.println(map); */ //lab 4
         out.print("Stop");
+        // znajdź różnicę między klasami abstrakcyjnymi i interfejsami
     }
 }
