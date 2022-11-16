@@ -17,7 +17,7 @@ public class RectangularMapTest {
         map = new RectangularMap(10, 10);
         animals = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            Animal bear = new Animal(map, new Vector2d(i / 2, 2 * i));
+            Animal bear = new Animal(map, new Vector2d(i / 2, 2 * i), (IPositionChangeObserver) map);
             animals.add(bear);
         }
         animals.get(0).move(MoveDirection.RIGHT);

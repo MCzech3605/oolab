@@ -6,10 +6,12 @@ import java.util.List;
 public class SimulationEngine implements IEngine{
     private MoveDirection[] directions;
     private IWorldMap map;
+    private IPositionChangeObserver observer;
     private Vector2d[] initialPositions;
-    SimulationEngine(MoveDirection[] directions, IWorldMap map, Vector2d[] initialPositions)
+    SimulationEngine(MoveDirection[] directions, IWorldMap map, Vector2d[] initialPositions, IPositionChangeObserver observer)
     {
         this.directions = directions;
+        this.observer = observer;
         this.map = map;
         this.initialPositions = initialPositions;
     }
@@ -20,7 +22,7 @@ public class SimulationEngine implements IEngine{
 
         for(Vector2d position : this.initialPositions)
         {
-            Animal animal = new Animal(this.map, position);
+            Animal animal = new Animal(this.map, position, this.observer);
             animals.add(animal);
         }
         int n = animals.size();

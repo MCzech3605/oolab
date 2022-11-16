@@ -16,11 +16,12 @@ public class GrassFieldTest {
         map = new GrassField(10);
         animals = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            Animal bear = new Animal(map, new Vector2d(i / 2, 2 * i));
+            Animal bear = new Animal(map, new Vector2d(i / 2, 2 * i), (IPositionChangeObserver) map);
             animals.add(bear);
         }
         animals.get(0).move(MoveDirection.RIGHT);
         animals.get(0).move(MoveDirection.FORWARD);
+        //
     }
 
     @Test
@@ -41,7 +42,7 @@ public class GrassFieldTest {
         Vector2d initialPosition = new Vector2d(0, 0);
         Animal bear = new Animal(map, initialPosition);   //place is inside animal declaration
         Animal bear2 = (Animal) map.objectAt(initialPosition);
-        Assertions.assertTrue(bear2 == bear);
+        Assertions.assertSame(bear2, bear);
     }
 
     @Test
@@ -54,7 +55,7 @@ public class GrassFieldTest {
     @Test
     public void objectAtTest() {
         Animal bear = (Animal) map.objectAt(new Vector2d(1, 0));
-        Assertions.assertTrue(animals.get(0) == bear);
+        Assertions.assertSame(animals.get(0), bear);
         Vector2d v = new Vector2d(9, 9);
         Assertions.assertTrue(map.objectAt(v) instanceof Grass || map.objectAt(v) == null);
     }
