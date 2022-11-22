@@ -6,13 +6,13 @@ import java.lang.Math;
 public class GrassField extends AbstractWorldMap {
     int numberOfGrass;
     int maxCoordinateOfGrass;
+    MapBoundary mapBoundary = new MapBoundary();
     protected Map<Vector2d, Grass> grassPlacement = new HashMap<>();
 
     public GrassField(int n) {
         this.numberOfGrass = n;
         maxCoordinateOfGrass = (int) Math.sqrt((double) n * 10);
         generateGrass(n);
-        //
     }
 
     private void generateGrass(int n) {
@@ -22,8 +22,8 @@ public class GrassField extends AbstractWorldMap {
             while (this.isOccupied(newPosition))
                 newPosition = new Vector2d(rand.nextInt(maxCoordinateOfGrass), rand.nextInt(maxCoordinateOfGrass));
             this.grassPlacement.put(newPosition, new Grass(newPosition));
+            mapBoundary.addElement(newPosition);
         }
-        //
     }
 
     @Override
@@ -36,8 +36,8 @@ public class GrassField extends AbstractWorldMap {
     }
 
     @Override
-    Vector2d getLowerLeft() {
-        return getExtreme(true);
+    public Vector2d getLowerLeft() {
+        return mapBoundary.lowerLeft();
     }
 
     private Vector2d getExtreme(Boolean trueForLL) {
@@ -71,8 +71,8 @@ public class GrassField extends AbstractWorldMap {
     }
 
     @Override
-    Vector2d getUpperRight() {
-        return getExtreme(false);
+    public Vector2d getUpperRight() {
+        return mapBoundary.upperRight();
     }
 
     @Override
@@ -93,5 +93,16 @@ public class GrassField extends AbstractWorldMap {
             grassPlacement.remove(newPosition);
             this.generateGrass(1);
         }
+    }
+    @Override
+    public boolean place(Animal animal)
+    {
+        if(super.place(animal))
+        {
+            mapBoundary.addElement(animal.getPosition());
+            animal.addObserver(mapBoundary);
+            return true;
+        }
+        return false;
     }
 }

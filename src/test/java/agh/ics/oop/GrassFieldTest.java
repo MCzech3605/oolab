@@ -40,9 +40,12 @@ public class GrassFieldTest {
     @Test
     public void placeTest() {
         Vector2d initialPosition = new Vector2d(0, 0);
-        Animal bear = new Animal(map, initialPosition);   //place is inside animal declaration
+        Animal bear = new Animal(map, initialPosition, (IPositionChangeObserver) map);   //place is inside animal declaration
         Animal bear2 = (Animal) map.objectAt(initialPosition);
         Assertions.assertSame(bear2, bear);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            Animal b = new Animal(map, new Vector2d(0, 0), (IPositionChangeObserver) map);
+        });
     }
 
     @Test

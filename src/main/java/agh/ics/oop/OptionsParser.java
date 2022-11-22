@@ -3,9 +3,12 @@ package agh.ics.oop;
 public class OptionsParser {
     MoveDirection[] parse(String[] words) {
         int n = 0;
-        for (String a :
-                words)
+        for (String a : words)
+        {
             if (this.isCorrect(a)) n++;
+            else throw new IllegalArgumentException(a + " is not legal move specification");
+        }
+
         MoveDirection[] result;
         result = new MoveDirection[n];
         int i = 0;

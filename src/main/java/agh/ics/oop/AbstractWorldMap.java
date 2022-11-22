@@ -1,8 +1,6 @@
 package agh.ics.oop;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver{
@@ -12,7 +10,7 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
     public boolean place(Animal animal) {
         Vector2d initialPosition = animal.getPosition();
         if(!this.canMoveTo(initialPosition))
-            return false;
+            throw new IllegalArgumentException(initialPosition + " is not valid position to place new animal");
         this.animals.put(initialPosition, animal);
         return true;
     }
@@ -21,8 +19,7 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
         return objectAt(position) != null;
     }
 
-    abstract Vector2d getLowerLeft();
-    abstract Vector2d getUpperRight();
+
 
     @Override
     public String toString()

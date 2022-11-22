@@ -22,12 +22,12 @@ public class RectangularMap extends AbstractWorldMap {
     }
 
     @Override
-    Vector2d getLowerLeft() {
+    public Vector2d getLowerLeft() {
         return this.lowerLeft;
     }
 
     @Override
-    Vector2d getUpperRight() {
+    public Vector2d getUpperRight() {
         return this.upperRight;
     }
 
