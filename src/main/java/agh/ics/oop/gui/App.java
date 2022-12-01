@@ -10,10 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-import java.io.FileInputStream;
-
-import static java.lang.System.out;
-
 public class App extends Application {
     public IWorldMap map;
     GridPane grid;
@@ -44,25 +40,16 @@ public class App extends Application {
         });
 
         HBox hBox = new HBox(startButton, space, textField);
-        grid.add(hBox, 0, 0);
+        grid.add(hBox,0, 0);
     }
     @Override
     public void init()
     {
-//        String[] args = getParameters().getRaw().toArray(new String[0]);
-        /*String[] args2 = {"f", "b", "r", "l", "f", "f", "r", "r", "f", "f", "f", "f", "f", "f", "f", "f"};
-        MoveDirection[] directions = new OptionsParser().parse(args2);
-        Vector2d[] positions = {new Vector2d(2,2), new Vector2d(3,4)};
-        this.engine = new SimulationEngine(directions, map, positions, (IPositionChangeObserver) map, this);
-        engineThread = new Thread(engine);*/
         this.grid = new GridPane();
-        //engineThread.start();
     }
-    private void updateGrid(GridPane grid)
+    private void updateGrid()
     {
         grid.getChildren().clear();
-
-        //button
         initializeStartButton();
 
         grid.setGridLinesVisible(true);
@@ -109,6 +96,6 @@ public class App extends Application {
     }
     public void positionChanged()
     {
-        updateGrid(grid);
+        updateGrid();
     }
 }

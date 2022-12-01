@@ -90,16 +90,16 @@ public class Animal implements IMapElement {
         switch (this.orientation)
         {
             case EAST -> {
-                return "src/main/resources/right.png";
+                return "src/main/resources/right1.png";
             }
             case WEST -> {
-                return "src/main/resources/left.png";
+                return "src/main/resources/left1.png";
             }
             case NORTH -> {
-                return "src/main/resources/up.png";
+                return "src/main/resources/up1.png";
             }
             case SOUTH -> {
-                return "src/main/resources/down.png";
+                return "src/main/resources/down1.png";
             }
         }
         return null;

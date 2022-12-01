@@ -8,26 +8,12 @@ import static java.lang.System.out;
 public class World {
     public static void main(String[] args) {
         try{
-            out.println("Start");
             Application.launch(App.class, args);
-            /*String[] args2 = {"f", "b", "r", "l", "f", "f", "r", "r", "f", "f", "f", "f", "f", "f", "f", "f"};
-            MoveDirection[] directions = new OptionsParser().parse(args);
-            IWorldMap map = new GrassField(10);
-            out.println(map);
-            Vector2d[] positions = {new Vector2d(2,2), new Vector2d(3,4)};
-            IEngine engine = new SimulationEngine(directions, map, positions, (IPositionChangeObserver) map);
-            engine.run();
-            out.println(map);*/
-            out.print("Stop");
         }
         catch (IllegalArgumentException ex)
         {
             out.println(ex.getMessage());
         }
-    }   //w samouczekprogramisty.pl masz dobre omówienie wątków
-    // spytaj dra Pohla czy mamy kończyć wątek przed rozpoczęciem nowego
+    }   //stwórz diagram UML, zaprojektuj ogólnie jak to ma wyglądać
+    //na koniec projektu w readme napisz co zostało zaimplementowane, a co nie
 }
-/*
-things to do:
-1. Pause SimulationEngine every time when an animal moves
-*/
